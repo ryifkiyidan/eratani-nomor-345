@@ -1,10 +1,15 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function TableBody({ users, currentPage, pageSize, setModalShow, setUserData }) {
+function TableBody({ users, currentPage, pageSize, setModalShow, setAlertModalShow, setUserData }) {
   const handleEdit = (user) => {
     setUserData(user);
     setModalShow(true);
+  };
+
+  const handleDelete = (user) => {
+    setUserData(user);
+    setAlertModalShow(true);
   };
 
   return (
@@ -21,7 +26,7 @@ function TableBody({ users, currentPage, pageSize, setModalShow, setUserData }) 
               <Button className="mx-1" variant="outline-success" onClick={() => handleEdit(user)}>
                 Edit
               </Button>
-              <Button className="mx-1" variant="outline-danger">
+              <Button className="mx-1" variant="outline-danger" onClick={() => handleDelete(user)}>
                 Delete
               </Button>
             </td>

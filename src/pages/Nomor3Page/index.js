@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Table } from 'react-bootstrap';
+import { Button, Container, Form, Table } from 'react-bootstrap';
 import ModalComponent from 'components/ModalComponent';
 import { IoAdd } from 'react-icons/io5';
 import TableBody from './TableBody';
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from 'redux/actions/action3';
 import Pagination from 'rc-pagination';
 import './rc-pagination.scss';
+import AlertModalComponent from 'components/AlertModalComponent';
 
 function Nomor3Page() {
   // @ts-ignore
@@ -19,6 +20,7 @@ function Nomor3Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [modalShow, setModalShow] = useState(false);
+  const [alertModalShow, setAlertModalShow] = useState(false);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -42,10 +44,19 @@ function Nomor3Page() {
         <>
           <Table striped bordered hover responsive>
             <TableHead />
-            <TableBody users={users} currentPage={currentPage} pageSize={pageSize} setModalShow={setModalShow} setUserData={setUserData} />
+            <TableBody users={users} currentPage={currentPage} pageSize={pageSize} setModalShow={setModalShow} setAlertModalShow={setAlertModalShow} setUserData={setUserData} />
           </Table>
-          <div className="place-content-center">
+          <div className="d-flex justify-content-between">
+            <div>
+              <Form.Select size="sm" onChange={(e) => setPageSize(parseInt(e.target.value))}>
+                <option value="10">10 entries</option>
+                <option value="25">25 entries</option>
+                <option value="50">50 entries</option>
+                <option value="100">100 entries</option>
+              </Form.Select>
+            </div>
             <Pagination pageSize={pageSize} total={users.length} onChange={(e) => setCurrentPage(e)} />
+            <div></div>
           </div>
         </>
       )}
@@ -53,10 +64,18 @@ function Nomor3Page() {
         userData={userData}
         show={modalShow}
         backdrop="static"
-        keyboard={false}
+        keyboard={true}
         onHide={() => {
           setUserData(null);
           setModalShow(false);
+        }}
+      />
+      <AlertModalComponent
+        userData={userData}
+        show={alertModalShow}
+        onHide={() => {
+          setUserData(null);
+          setAlertModalShow(false);
         }}
       />
     </Container>
