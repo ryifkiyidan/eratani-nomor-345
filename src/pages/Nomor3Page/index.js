@@ -18,11 +18,11 @@ function Nomor3Page() {
   const dispatch = useDispatch();
 
   // Table Attributes
+  const [userData, setUserData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const [modalShow, setModalShow] = useState(false);
   const [alertModalShow, setAlertModalShow] = useState(false);
-  const [userData, setUserData] = useState(null);
-  const [pageSize, setPageSize] = useState(10);
   const [keyword, setKeyword] = useState('');
 
   useEffect(() => {

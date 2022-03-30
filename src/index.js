@@ -6,11 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import './custom.scss';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import reducer3 from 'redux/reducers/reducer3';
 import { Provider } from 'react-redux';
+import reducer3 from 'redux/reducers/reducer3';
+import reducer4 from 'redux/reducers/reducer4';
+import reducer5 from 'redux/reducers/reducer5';
 
 const rootReducer = combineReducers({
   reducer3,
+  reducer4,
+  reducer5,
 });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
