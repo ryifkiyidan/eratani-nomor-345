@@ -1,0 +1,45 @@
+// Overwrite theme variables
+
+// Color
+
+$min-contrast-ratio: 3;
+$primary: rebeccapurple;
+$danger: #dd0000;
+$success: #0e9749;
+$warning: #ffcc00;
+$light: white;
+
+// Button
+$border-radius: 5px;
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Styles
+.place-content-center {
+  display: flex;
+  place-content: center center;
+}
+
+.text-1 {
+  font-size: 1rem !important;
+}
+
+.text-2 {
+  font-size: 1.25rem !important;
+}
+
+.text-3 {
+  font-size: 1.5rem !important;
+}
+
+.text-4 {
+  font-size: 1.75rem !important;
+}
+.text-5 {
+  font-size: 2rem !important;
+}
+
+.tombol {
+  display: flex;
+  place-content: center center;
+}

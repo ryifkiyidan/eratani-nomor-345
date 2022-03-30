@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from 'pages/HomePage';
+import Nomor3Page from 'pages/Nomor3Page';
+import Nomor4Page from 'pages/Nomor4Page';
+import Nomor5Page from 'pages/Nomor5Page';
+import ErrorPage from 'pages/ErrorPage';
+import NavbarComponent from 'components/NavbarComponent';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavbarComponent />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/nomor3" element={<Nomor3Page />} />
+        <Route path="/nomor4" element={<Nomor4Page />} />
+        <Route path="/nomor5" element={<Nomor5Page />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 }
 
