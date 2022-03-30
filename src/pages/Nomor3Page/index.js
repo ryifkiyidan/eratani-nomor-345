@@ -19,6 +19,7 @@ function Nomor3Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [modalShow, setModalShow] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -41,14 +42,23 @@ function Nomor3Page() {
         <>
           <Table striped bordered hover responsive>
             <TableHead />
-            <TableBody users={users} currentPage={currentPage} pageSize={pageSize} setModalShow={setModalShow} />
+            <TableBody users={users} currentPage={currentPage} pageSize={pageSize} setModalShow={setModalShow} setUserData={setUserData} />
           </Table>
           <div className="place-content-center">
             <Pagination pageSize={pageSize} total={users.length} onChange={(e) => setCurrentPage(e)} />
           </div>
         </>
       )}
-      <ModalComponent show={modalShow} backdrop="static" keyboard={false} onHide={() => setModalShow(false)} />
+      <ModalComponent
+        userData={userData}
+        show={modalShow}
+        backdrop="static"
+        keyboard={false}
+        onHide={() => {
+          setUserData(null);
+          setModalShow(false);
+        }}
+      />
     </Container>
   );
 }

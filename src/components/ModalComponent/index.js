@@ -5,7 +5,7 @@ function ModalComponent({ userData = null, ...props }) {
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Add User</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">{userData ? 'Edit' : 'Add'} User</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -13,29 +13,29 @@ function ModalComponent({ userData = null, ...props }) {
           <Row>
             <Col md>
               <FloatingLabel label="First Name" className="mb-3">
-                <Form.Control type="text" placeholder="First Name" />
+                <Form.Control type="text" placeholder={userData ? userData.first_name : 'First Name'} value={userData ? userData.first_name : null} />
               </FloatingLabel>
             </Col>
             <Col md>
               <FloatingLabel label="Last Name" className="mb-3">
-                <Form.Control type="text" placeholder="Last Name" />
+                <Form.Control type="text" placeholder={userData ? userData.last_name : 'Last name'} value={userData ? userData.last_name : null} />
               </FloatingLabel>
             </Col>
           </Row>
           <Row>
             <Col md>
               <FloatingLabel label="Email Address" className="mb-3">
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control type="email" placeholder={userData ? userData.email : 'Email address'} value={userData ? userData.email : null} />
               </FloatingLabel>
             </Col>
           </Row>
           <Row>
             <Col md>
               <FloatingLabel label="Gender">
-                <Form.Select>
+                <Form.Select value={userData ? userData.gender : null}>
                   <option>Input gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </Form.Select>
               </FloatingLabel>
             </Col>
