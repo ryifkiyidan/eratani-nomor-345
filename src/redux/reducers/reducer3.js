@@ -28,7 +28,7 @@ const reducer3 = (state = inisialState, action) => {
         ...state,
         users: state.users.map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, title: action.payload.title };
+            return { ...item, ...action.payload };
           }
           return item;
         }),

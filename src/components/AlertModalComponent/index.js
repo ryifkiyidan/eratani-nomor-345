@@ -1,7 +1,19 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { deleteUser } from 'redux/actions/action3';
 
 function AlertModalComponent({ userData = null, ...props }) {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    if (userData !== null) {
+      dispatch(deleteUser(userData.id));
+      userData = null;
+    }
+    props.onHide();
+  };
+
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
@@ -15,7 +27,9 @@ function AlertModalComponent({ userData = null, ...props }) {
         <Button variant="success" onClick={props.onHide}>
           Cancel
         </Button>
-        <Button variant="danger">Delete</Button>
+        <Button variant="danger" onClick={() => handleDelete()}>
+          Delete
+        </Button>
       </Modal.Footer>
     </Modal>
   );
